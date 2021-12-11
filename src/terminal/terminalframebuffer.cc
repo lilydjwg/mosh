@@ -67,6 +67,7 @@ DrawState::DrawState( int s_width, int s_height )
     origin_mode( false ), auto_wrap_mode( true ), insert_mode( false ), cursor_visible( true ),
     reverse_video( false ), bracketed_paste( false ), mouse_reporting_mode( MOUSE_REPORTING_NONE ),
     mouse_focus_event( false ), mouse_alternate_scroll( false ), mouse_encoding_mode( MOUSE_ENCODING_DEFAULT ),
+    cursor_style( Terminal::CursorStyle::BLINKING_BLOCK ),
     application_mode_cursor_keys( false )
 {
   reinitialize_tabs( 0 );
@@ -396,6 +397,7 @@ void Framebuffer::soft_reset( void )
   ds.insert_mode = false;
   ds.origin_mode = false;
   ds.cursor_visible = true; /* per xterm and gnome-terminal */
+  ds.cursor_style = Terminal::CursorStyle::BLINKING_BLOCK;
   ds.application_mode_cursor_keys = false;
   ds.set_scrolling_region( 0, ds.get_height() - 1 );
   ds.add_rendition( 0 );

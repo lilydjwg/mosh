@@ -48,6 +48,16 @@
 namespace Terminal {
 using color_type = uint32_t;
 
+enum CursorStyle {
+  BLINKING_BLOCK = 0,
+  BLINKING_BLOCK_DEFAULT = 1,
+  STEADY_BLOCK = 2,
+  BLINKING_UNDERLINE = 3,
+  STEADY_UNDERLINE = 4,
+  BLINKING_BAR = 5,
+  STEADY_BAR = 6,
+};
+
 class Renditions
 {
 public:
@@ -62,6 +72,16 @@ public:
     invisible,
     SIZE
   } attribute_type;
+
+  enum CursorStyle {
+    BLINKING_BLOCK = 0,
+    BLINKING_BLOCK_DEFAULT = 1,
+    STEADY_BLOCK = 2,
+    BLINKING_UNDERLINE = 3,
+    STEADY_UNDERLINE = 4,
+    BLINKING_BAR = 5,
+    STEADY_BAR = 6,
+  };
 
 private:
   static const uint64_t true_color_mask = 0x1000000;
@@ -311,6 +331,7 @@ public:
   bool auto_wrap_mode;
   bool insert_mode;
   bool cursor_visible;
+  int cursor_style;
   bool reverse_video;
   bool bracketed_paste;
 
